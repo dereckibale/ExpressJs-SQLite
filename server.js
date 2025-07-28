@@ -15,22 +15,22 @@ const db = new sqlite3.Database('mydatabase.sqlite', (err) => {
 });
 
 // Create a simple table if it doesn't exist
-// db.serialize(() => {
-//     db.run(`CREATE TABLE IF NOT EXISTS products (
-//       id INTEGER PRIMARY KEY AUTOINCREMENT,
-//       name TEXT NOT NULL,
-//       selling_price REAL NOT NULL,
-//       purchase_price REAL NOT NULL,
-//       barcode TEXT NOT NULL,
-//       Description TEXT NULL
-//     )`, (err) => {
-//       if (err) {
-//         console.error('Error creating products table:', err);
-//       } else {
-//         console.log('Products table created');
-//       }
-//     });
-//   });
+db.serialize(() => {
+    db.run(`CREATE TABLE IF NOT EXISTS products (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      name TEXT NOT NULL,
+      selling_price REAL NOT NULL,
+      purchase_price REAL NOT NULL,
+      barcode TEXT NOT NULL,
+      Description TEXT NULL
+    )`, (err) => {
+      if (err) {
+        console.error('Error creating products table:', err);
+      } else {
+        console.log('Products table created');
+      }
+    });
+  });
 
 
 
